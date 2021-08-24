@@ -10,6 +10,26 @@
 支持腾讯视频、爱奇艺、优酷、芒果TV、搜狐视频、乐视视频、PPTV、哔哩哔哩
 */
 (function() {
+var mixkey = encodeURIComponent('mx12176592');
+if(window[mixkey]){return;} window[mixkey]=true; var url=location.href;
+if(url.match(/(.*?):\/\/(.*?).youku.com\/v_(.*?)/)||url.match(/(.*?):\/\/(.*?).iqiyi.com\/v_(.*?)/)||url.match(/(.*?):\/\/(.*?).iqiyi.com\/w_(.*?)/)||url.match(/(.*?):\/\/(.*?).iqiyi.com\/a_(.*?)/)||url.match(/(.*?):\/\/(.*?).le.com\/vplay_(.*?)/)||url.match(/(.*?):\/\/v.qq.com\/x\/cover\/(.*?)/)||url.match(/(.*?):\/\/v.qq.com\/x\/page\/(.*?)/)||url.match(/(.*?):\/\/(.*?).tudou.com\/listplay\/(.*?)/)||url.match(/(.*?):\/\/(.*?).tudou.com\/albumplay\/(.*?)/)||url.match(/(.*?):\/\/(.*?).tudou.com\/programs\/view\/(.*?)/)||url.match(/(.*?):\/\/(.*?).mgtv.com\/b\/(.*?)/)||url.match(/(.*?):\/\/film.sohu.com\/album\/(.*?)/)||url.match(/(.*?):\/\/tv.sohu.com\/v\/(.*?)/)||url.match(/(.*?):\/\/(.*?).acfun.cn\/v\/(.*?)/)||url.match(/(.*?):\/\/(.*?).bilibili.com\/video\/(.*?)/)||url.match(/(.*?):\/\/(.*?).bilibili.com\/anime\/(.*?)/)||url.match(/(.*?):\/\/(.*?).bilibili.com\/bangumi\/play\/(.*?)/)||url.match(/(.*?):\/\/(.*?).baofeng.com\/play\/(.*?)/)||url.match(/(.*?):\/\/vip.pptv.com\/show\/(.*?)/)||url.match(/(.*?):\/\/v.pptv.com\/show\/(.*?)/)){
+
+ 
+var isloadjs=false;try { isloadjs=window.mx_browser_obj.getisloadjs(); } catch(e) {}function mxloadScript(url, callback){if(url.indexOf('mxloadurl:')>-1) {loadjsinfo();callback();return;}if(isloadjs){ 
+ var script = document.createElement('script');
+ script.type = 'text/javascript'; 
+script.onload = function(){ callback();}
+script.src = url;
+var heads=document.getElementsByTagName('head');
+if(heads.length>0){heads[0].appendChild(script);}
+else
+{document.getElementsByTagName('body').item(0).appendChild(script);} }else{var xhr = new XMLHttpRequest();xhr.open('get', url); xhr.withCredentials=false;xhr.onreadystatechange = function () {if(xhr.readyState === 4){     var isloadjstxt=true;try {eval(xhr.responseText);} catch(e) {isloadjstxt=false;window.mx_browser_obj.loadjstxt(xhr.responseText);} if(isloadjstxt){callback();}else{setTimeout(callback,250);}      } }; xhr.send();} }
+mxloadScript('https://cdn.bootcss.com/jquery/3.5.1/jquery.min.js', function(){
+mxloadScript('mxloadurl:', function(){
+
+})
+});
+function loadjsinfo(){
 // ==UserScript==
 // @name              VIP 视频解析
 // @version           1.0.0
